@@ -1,0 +1,58 @@
+<div
+  style="text-align: center"
+  class="wrapper"
+  (window:resize)="onResize($event)"
+>
+  <div>
+    <div class="container">
+      <div class="text1" *ngIf="errors.length > 0">
+        <h4 *ngIf="errors.length > 0" class="mt-4">Cámara desactivada:</h4>
+        <ul *ngFor="let error of errors">
+          <li>
+            Se debe dar permisos al navegador para utilizar la cámara y poder
+            continuar
+          </li>
+        </ul>
+      </div>
+    </div>
+    <webcam
+      [height]="height"
+      [width]="width"
+      [trigger]="triggerObservable"
+      (imageCapture)="handleImage($event)"
+      *ngIf="showWebcam"
+      [allowCameraSwitch]="false"
+      [switchCamera]="nextWebcamObservable"
+      [videoOptions]="videoOptions"
+      (cameraSwitched)="cameraWasSwitched($event)"
+      (initError)="handleInitError($event)"
+    ></webcam>
+    <br />
+    <div style="display: flex; justify-content: center; align-items: center">
+      <form
+        class="form-login needs-validation card p-3"
+        autocomplete="off"
+        [formGroup]="formConsulta"
+        (ngSubmit)="triggerSnapshot(1)"
+        style="border: none; background-color: white; width: 80% !important"
+      >
+        <button class="btn-credits btn mt-1 mb-1 validar">
+          <h4 class="m-0">Acceder</h4>
+        </button>
+        <div class="spacer"></div>
+        <button
+          type="button"
+          class="btn-creditsV2 btn mt-1 mb-1 validar"
+          (click)="triggerSnapshot(2)"
+        >
+          <h4 class="m-0">Cancelar</h4>
+        </button>
+
+        <p class="policies m-0 pt-2">
+          Al acceder estarás aceptando la Autorización de tratamiento de datos y
+          las Condiciones de Uso del Servicio
+        </p>
+      </form>
+    </div>
+  </div>
+</div>

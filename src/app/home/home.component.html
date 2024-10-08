@@ -1,0 +1,883 @@
+<div class="col-12 col-md-12">
+  <img src="../../assets/img/header.jpg" style="width: inherit" class="img1" />
+</div>
+<section class="fondo">
+  <div class="container">
+    <div class="col-12 col-md-12">
+      <img
+        src="../../assets/img/baner.jpg"
+        style="width: inherit"
+        class="img"
+      />
+    </div>
+    <div class="card text-center">
+      <div class="card-header" *ngIf="politicas">
+        Conoce nuestras condiciones para poder aplicar
+      </div>
+      <div class="card-header" *ngIf="form">Formulario de inscripción</div>
+      <div class="filing-document">
+        <div class="card-body" *ngIf="politicas">
+          <p class="card-title">Para postularte, debes tener presente:</p>
+          <p class="card-text">
+            -Ser trabajador afiliado a Confa, aplica para todas las categorías,
+            es decir, categoría A, categoría B y categoría C. No podrán realizar
+            las postulaciones, los beneficiarios ni particulares.<br />
+            -Todos los interesados en reservar alojamientos en las temporadas de
+            Semana Santa, 24 o 31 de diciembre, deberán diligenciar el
+            formulario en confa.co con toda la información requerida. Solo este
+            medio se toma como postulación para las temporadas mencionadas.
+            Adicionalmente, el trabajador no debe aparecer con reserva como
+            alojado o acompañante en las mismas fechas de los últimos tres
+            años.<br />
+            -Las asignaciones serán comunicadas directamente a los usuarios. Es
+            por ello que deben garantizar poner números de contactos y correos
+            electrónicos correctos para que puedan conocer la información de
+            manera oportuna.<br />
+            -Los sorteos solo se realizarán entre los postulados que hayan
+            realizado la reserva a través del formulario y cumplan con las
+            condiciones del proceso.<br />
+            -La fecha límite de pago, será 30 días a partir de la fecha de
+            asignación, en el caso de no efectuarse, se sorteará nuevamente
+            entre los postulados.<br />
+            -La reserva es personal e intransferible<br />
+            -Solo se puede postular una vez por trabajador afiliado.
+          </p>
+          <p class="card-title">¡Recuerda!</p>
+          <p class="card-title1">- Para alojamiento Semana Santa 2024</p>
+          <p class="card-text">
+            Las postulaciones estarán disponibles entre el 9 y el 31 de enero de
+            2024. El sorteo se realizará, bajo las condiciones anteriormente
+            descritas, la primera semana de febrero de 2024.
+          </p>
+          <p class="card-title1">
+            - Para alojamiento 24 o 31 de diciembre 2024
+          </p>
+          <p class="card-text">
+            Estarán disponibles del 9 de enero al 31 de marzo de 2024. El sorteo
+            se realizará, bajo las condiciones ya mencionadas, la primera semana
+            de abril de 2024.
+          </p>
+
+          <!-- <a href="#" class="btn btn-acepto">Acepto</a> -->
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="flexCheckIndeterminate"
+              (click)="aceptoPoliticas1()"
+            />
+            <label class="card-text2">
+              <p class="card-text2">
+                Acepto autorización de
+                <a
+                  class="link-style"
+                  data-bs-toggle="modal"
+                  data-bs-target="#modalPoliticaTratamientoDatos"
+                  >política de tratamiento de datos</a
+                >
+              </p>
+            </label>
+          </div>
+          <!-- <div class="form-group m-0">
+            <button
+              class="btn btn-credits btn-signin btn-block mt-1 mb-1"
+              (click)="aceptoPoliticas()"
+            >
+              <span class="spinner-border-sm mr-1"></span>
+              Acepto
+            </button>
+          </div> -->
+        </div>
+      </div>
+
+      <div class="card-body">
+        <div class="animated fadeIn fast">
+          <div class="login-content margtop">
+            <div class="filing-document">
+              <form
+                class="form-login needs-validation"
+                autocomplete="off"
+                [formGroup]="formLogin"
+                (ngSubmit)="onSubmit()"
+                *ngIf="politicas"
+              >
+                <div
+                  class="row d-flex align-items-center justify-content-center"
+                >
+                  <div class="col-md-4">
+                    <div
+                      class="form-group form-group-custom content-custom-select"
+                    >
+                      <label class="m-0 mb-1 text-left"
+                        >Tipo de documento*</label
+                      >
+                      <select
+                        class="form-control box"
+                        id="typeDocument"
+                        name="typeDocument"
+                        formControlName="typeDocument"
+                        placeholder="* Tipo Documento"
+                        required
+                        [ngClass]="{
+                          'is-invalid':
+                            (submitted || f.typeDocument.touched) &&
+                            f.typeDocument.errors
+                        }"
+                        [attr.disabled]="form ? true : null"
+                      >
+                        <option value="" selected disabled>
+                          *Tipo de documento
+                        </option>
+                        <option value="CC">Cédula de Ciudadanía</option>
+                        <option value="CE">Cédula de Extranjería</option>
+                        <option value="P">Pasaporte</option>
+                        <option value="PEP">
+                          Permiso especial de permanencia
+                        </option>
+                        <option value="PPP">
+                          Permiso de protección personal
+                        </option>
+                      </select>
+                      <div
+                        *ngIf="
+                          (submitted || f.typeDocument.touched) &&
+                          f.typeDocument.errors?.required
+                        "
+                        class="invalid-feedback animated fadeIn fast"
+                      >
+                        <span
+                          class="badge badge-pill badge-danger d-block mt-2 pt-1 pb-1 pr-2 pl-2 text-left"
+                        >
+                          DEBES SELECCIONAR UN TIPO DE DOCUMENTO</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group form-group-custom col-md-4 mt-4 mb-4">
+                    <label class="m-0 mb-1">Número de documento *</label>
+                    <input
+                      type="number"
+                      formControlName="document"
+                      class="form-control sinFlechas box"
+                      placeholder="*Ingresa el número de documento"
+                      placement="right"
+                      min="1"
+                      [class.is-invalid]="getDocument"
+                      [attr.disabled]="form ? true : null"
+                    />
+                    <div
+                      *ngIf="getDocument"
+                      class="invalid-feedback animate__animated animate__fadeIn animate__fast"
+                    >
+                      <span
+                        class="badge badge-pill badge-danger d-block mt-2 text-left"
+                        >NÚMERO DE DOCUMENTO ES REQUERIDO</span
+                      >
+                    </div>
+                    <div
+                      *ngIf="f.document.touched && f.document.errors?.min"
+                      class="invalid-feedback animate__animated animate__fadeIn animate__fast"
+                    >
+                      <span
+                        class="badge badge-pill badge-danger d-block mt-2 text-left"
+                      >
+                        DEBES INGRESAR MÍNIMO 6 DÍGITOS</span
+                      >
+                    </div>
+                    <div
+                      *ngIf="f.document.touched && f.document.errors?.max"
+                      class="invalid-feedback animate__animated animate__fadeIn animate__fast"
+                    >
+                      <span
+                        class="badge badge-pill badge-danger d-block mt-2 text-left"
+                      >
+                        DEBES INGRESAR MÁXIMO 15 DÍGITOS</span
+                      >
+                    </div>
+                    <div
+                      *ngIf="f.document.touched && f.document.errors?.pattern"
+                      class="invalid-feedback animate__animated animate__fadeIn animate__fast"
+                    >
+                      <span
+                        class="badge badge-pill badge-danger d-block mt-2 text-left"
+                        >DEBES INGRESAR DÍGITOS POSITIVOS</span
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="!form">
+                  <div class="form-group m-0 mt-2 mb-1">
+                    <button
+                      class="btn btn-credits btn-signin btn-block mt-1 mb-4"
+                    >
+                      <span class="spinner-border-sm mr-1"></span>
+                      Valida tus datos
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="filing-document">
+              <form
+                class="form-login needs-validation"
+                autocomplete="off"
+                [formGroup]="formForm"
+                (ngSubmit)="onSubmit2()"
+                *ngIf="form"
+              >
+                <div
+                  class="row d-flex align-items-center justify-content-center"
+                >
+                  <div class="form-group form-group-custom col-md-5 mt-4 mb-3">
+                    <div class="form-group form-group-custom">
+                      <label class="m-0 mb-1">Tipo de documento (*)</label>
+                      <input
+                        type="text"
+                        class="form-control box"
+                        placeholder="{{ this.f.typeDocument.value }}"
+                        placement="right"
+                        autocomplete="off"
+                        [attr.disabled]
+                        style="background-color: #e1e1e1"
+                      />
+                    </div>
+                  </div>
+                  <div class="form-group form-group-custom col-md-5 mt-4 mb-3">
+                    <div class="form-group form-group-custom">
+                      <label class="m-0 mb-1">Número de documento</label>
+                      <input
+                        type="text"
+                        class="form-control box"
+                        placeholder="{{ f.document.value }}"
+                        placement="right"
+                        autocomplete="off"
+                        [attr.disabled]
+                        style="background-color: #e1e1e1"
+                      />
+                    </div>
+                  </div>
+                  <div class="form-group form-group-custom col-md-5 mt-2 mb-3">
+                    <div class="form-group form-group-custom">
+                      <label class="m-0 mb-1">Nombre completo *</label>
+                      <input
+                        type="text"
+                        formControlName="firstName"
+                        class="form-control box"
+                        placeholder="*Ingresa el nombre completo"
+                        placement="right"
+                        autocomplete="off"
+                        [ngClass]="{
+                          'is-invalid':
+                            (submitted || r.firstName.touched) &&
+                            r.firstName.errors
+                        }"
+                      />
+                      <div
+                        *ngIf="
+                          (submitted || r.firstName.touched) &&
+                          r.firstName.errors?.required
+                        "
+                        class="invalid-feedback animated fadeIn fast"
+                      >
+                        <span
+                          class="badge badge-pill badge-danger d-block mt-2 pt-1 pb-1 pr-2 pl-2 text-left"
+                        >
+                          DEBES INGRESAR EL NOMBRE COMPLETO</span
+                        >
+                      </div>
+                      <div
+                        *ngIf="
+                          (submitted || r.firstName.touched) &&
+                          r.firstName.errors?.pattern
+                        "
+                        class="invalid-feedback animated fadeIn fast"
+                      >
+                        <span
+                          class="badge badge-pill badge-danger d-block mt-2 pt-1 pb-1 pr-2 pl-2 text-left"
+                        >
+                          DEBES INGRESAR SOLO LETRAS</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group form-group-custom col-md-5 mt-2 mb-3">
+                    <div class="form-group form-group-custom">
+                      <label class="m-0 mb-1">Número del teléfono *</label>
+                      <input
+                        type="number"
+                        formControlName="phone"
+                        class="form-control box"
+                        placeholder="*Ingresa el número del teléfono"
+                        placement="right"
+                        autocomplete="off"
+                        [ngClass]="{
+                          'is-invalid':
+                            (submitted || r.phone.touched) && r.phone.errors
+                        }"
+                        required
+                      />
+                      <div
+                        *ngIf="
+                          (submitted || r.phone.touched) &&
+                          r.phone.errors?.required
+                        "
+                        class="invalid-feedback animated fadeIn fast"
+                      >
+                        <span
+                          class="badge badge-pill badge-danger d-block mt-2 pt-1 pb-1 pr-2 pl-2 text-left"
+                        >
+                          DEBES INGRESAR UN NUMERO TELÉFONICO</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group form-group-custom col-md-5 mt-2 mb-3">
+                    <div class="form-group form-group-custom">
+                      <label class="m-0 mb-1">Correo electrónico *</label>
+                      <input
+                        type="email"
+                        formControlName="email"
+                        class="form-control box"
+                        placeholder="*Ingresa el correo electrónico"
+                        placement="right"
+                        autocomplete="off"
+                        [ngClass]="{
+                          'is-invalid':
+                            (submitted || r.email.touched) && r.email.errors
+                        }"
+                        email
+                      />
+                      <div
+                        *ngIf="
+                          (submitted || r.email.touched) &&
+                          r.email.errors?.required
+                        "
+                        class="invalid-feedback animated fadeIn fast"
+                      >
+                        <span
+                          class="badge badge-pill badge-danger d-block mt-2 pt-1 pb-1 pr-2 pl-2 text-left"
+                          >DEBES INGRESAR UN CORREO ELECTRÓNICO</span
+                        >
+                      </div>
+                      <div
+                        *ngIf="
+                          (submitted || r.email.touched) &&
+                          r.email.errors?.email
+                        "
+                        class="invalid-feedback animated fadeIn fast"
+                      >
+                        <span
+                          class="badge badge-pill badge-danger d-block mt-2 pt-1 pb-1 pr-2 pl-2 text-left"
+                          >EL CORREO ELECTRÓNICO NO ES VALIDO</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group form-group-custom col-md-5 mt-2 mb-3">
+                    <div class="form-group form-group-custom">
+                      <label class="m-0 mb-1"
+                        >Confirma el correo electrónico *</label
+                      >
+                      <input
+                        type="email"
+                        formControlName="confirmEmail"
+                        class="form-control box"
+                        placeholder="*Confirma el correo electrónico"
+                        placement="right"
+                        autocomplete="off"
+                        [ngClass]="{
+                          'is-invalid':
+                            (submitted || r.confirmEmail.touched) &&
+                            r.confirmEmail.errors
+                        }"
+                        email
+                        onpaste="return false"
+                        oncut="return false"
+                        oncopy="return false"
+                      />
+                      <div
+                        *ngIf="
+                          (submitted || r.confirmEmail.touched) &&
+                          r.confirmEmail.errors?.required
+                        "
+                        class="invalid-feedback animated fadeIn fast"
+                      >
+                        <span
+                          class="badge badge-pill badge-danger d-block mt-2 pt-1 pb-1 pr-2 pl-2 text-left"
+                        >
+                          DEBES CONFIRMAR EL CORREO ELECTRÓNICO</span
+                        >
+                      </div>
+                      <div
+                        *ngIf="
+                          (submitted || r.confirmEmail.touched) &&
+                          r.confirmEmail.errors?.email
+                        "
+                        class="invalid-feedback animated fadeIn fast"
+                      >
+                        <span
+                          class="badge badge-pill badge-danger d-block mt-2 pt-1 pb-1 pr-2 pl-2 text-left"
+                        >
+                          EL CORREO ELECTRÓNICO NO ES VALIDO</span
+                        >
+                      </div>
+                      <div
+                        *ngIf="
+                          (submitted || r.confirmEmail.touched) &&
+                          r.confirmEmail.errors
+                        "
+                        class="invalid-feedback animated fadeIn fast"
+                      >
+                        <span
+                          class="badge badge-pill badge-danger d-block mt-2 pt-1 pb-1 pr-2 pl-2 text-left"
+                          >EL CORREO NO COINCIDE</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group form-group-custom col-md-5 mt-2 mb-3">
+                    <div
+                      class="form-group form-group-custom content-custom-select"
+                    >
+                      <label class="m-0 mb-1 text-left"
+                        >Sede del alojamiento *</label
+                      >
+                      <select
+                        (change)="capturar($event)"
+                        class="form-control"
+                        id="typeSede"
+                        name="typeSede"
+                        formControlName="typeSede"
+                        placeholder="* Sede alojamiento"
+                        required
+                        [ngClass]="{
+                          'is-invalid':
+                            (submitted || r.typeSede.touched) &&
+                            r.typeSede.errors
+                        }"
+                      >
+                        <option value="" selected disabled>
+                          *Selecciona la sede del alojamiento
+                        </option>
+                        <option
+                          value="{{ day.nombre }}"
+                          *ngFor="let day of cronograma"
+                        >
+                          {{ day.nombre }}
+                        </option>
+                      </select>
+                      <div
+                        *ngIf="
+                          (submitted || r.typeSede.touched) &&
+                          r.typeSede.errors?.required
+                        "
+                        class="invalid-feedback animated fadeIn fast"
+                      >
+                        <span
+                          class="badge badge-pill badge-danger d-block mt-2 pt-1 pb-1 pr-2 pl-2 text-left"
+                        >
+                          DEBES SELECCIONAR UNA SEDE</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group form-group-custom col-md-5 mt-2 mb-3">
+                    <div
+                      class="form-group form-group-custom form-group-custom content-custom-select"
+                    >
+                      <label class="m-0 mb-1 text-left"
+                        >Tipo de alojamiento *</label
+                      >
+                      <select
+                        class="form-control"
+                        id="typeAloja"
+                        name="typeAloja"
+                        formControlName="typeAloja"
+                        placeholder="* Tipo alojamiento"
+                        required
+                        [ngClass]="{
+                          'is-invalid':
+                            (submitted || r.typeAloja.touched) &&
+                            r.typeAloja.errors
+                        }"
+                      >
+                        <option value="" selected disabled>
+                          *Selecciona el tipo de alojamiento
+                        </option>
+                        <option
+                          value="{{ day.nombreCompleto }}"
+                          *ngFor="let day of lugar"
+                        >
+                          {{ day.nombreCompleto }}
+                        </option>
+                      </select>
+                      <div
+                        *ngIf="
+                          (submitted || r.typeAloja.touched) &&
+                          r.typeAloja.errors?.required
+                        "
+                        class="invalid-feedback animated fadeIn fast"
+                      >
+                        <span
+                          class="badge badge-pill badge-danger d-block mt-2 pt-1 pb-1 pr-2 pl-2 text-left"
+                        >
+                          DEBES SELECCIONAR UN TIPO DE ALOJAMIENTO</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group form-group-custom col-md-5 mt-2 mb-3">
+                    <div
+                      class="form-group form-group-custom form-group-custom content-custom-select"
+                    >
+                      <label class="m-0 mb-1 text-left"
+                        >Temporada del alojamiento *</label
+                      >
+                      <select
+                        class="form-control"
+                        id="typeTemporada"
+                        name="typeTemporada"
+                        formControlName="typeTemporada"
+                        placeholder="* TTemporada alojamiento"
+                        required
+                        [ngClass]="{
+                          'is-invalid':
+                            (submitted || r.typeTemporada.touched) &&
+                            r.typeTemporada.errors
+                        }"
+                      >
+                        <option value="" selected disabled>
+                          *Selecciona la temporada del alojamiento
+                        </option>
+                        <option
+                          value="{{ day.idSorteo }}"
+                          *ngFor="let day of day"
+                        >
+                          {{ day.nombreTemporada }}
+                        </option>
+                      </select>
+                      <div
+                        *ngIf="
+                          (submitted || r.typeTemporada.touched) &&
+                          r.typeTemporada.errors?.required
+                        "
+                        class="invalid-feedback animated fadeIn fast"
+                      >
+                        <span
+                          class="badge badge-pill badge-danger d-block mt-2 pt-1 pb-1 pr-2 pl-2 text-left"
+                        >
+                          DEBES SELECCIONAR UNA FECHA</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-5"></div>
+                </div>
+                <div class="form-group m-0">
+                  <button
+                    class="btn btn-credits btn-signin btn-block mt-1 mb-4 mt-4"
+                  >
+                    <span class="spinner-border-sm mr-1"></span>
+                    Enviar información
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="col-12 col-md-12" style="position: relative">
+  <img src="../../assets/img/up.png" style="width: inherit" class="img2" />
+  <button
+    style="
+      position: absolute;
+      top: 57%;
+      left: 38%;
+      transform: translate(-50%, -50%);
+    "
+    class="btn btn-credits btn-signin btn-block"
+    data-bs-toggle="modal"
+    data-bs-target="#modalPoliticaTratamientoDatos"
+  >
+    <span class="spinner-border-sm mr-1"></span>
+    Autorización de tratamiento de datos
+  </button>
+</div>
+<!-- Button trigger modal -->
+<button
+  type="button"
+  class="btn-modal-true btn btn-primary"
+  data-bs-toggle="modal"
+  data-bs-target="#trueModal"
+  hidden
+>
+  Launch demo modal
+</button>
+
+<!-- Modal bien-->
+<div
+  class="modal fade modal-success"
+  id="trueModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered justify-content-center">
+    <div class="modal-content">
+      <div class="modal-header success-header" id="modalSuccessLabel">
+        <div>
+          <div class="d-flex align-items-center justify-content-center m-2">
+            <img
+              src="assets/img/logo_reverse.png"
+              class="animate__animated animate__fadeIn animate__fast confa"
+            />
+          </div>
+          <div class="d-flex align-items-center justify-content-center m-2">
+            <img
+              src="assets/img/success.png"
+              class="animate__animated animate__fadeIn animate__fast"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="text-center p-2">
+          <h6 class="m-0 pt-3 pb-3">
+            {{ titulo }}
+          </h6>
+          <div class="m-0 pt-3 pb-3">
+            <p class="m-0">{{ texto }}</p>
+          </div>
+        </div>
+
+        <div class="p-2">
+          <div class="text-center btn-block">
+            <a href="#" class="btn btn-acepto" data-bs-dismiss="modal"
+              >Acepto</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Button trigger modal -->
+<button
+  type="button"
+  class="btn-modal-error btn btn-primary"
+  data-bs-toggle="modal"
+  data-bs-target="#ModalError"
+  hidden
+>
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div
+  class="modal fade modal-success"
+  id="ModalError"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered justify-content-center">
+    <div class="modal-content">
+      <div class="modal-header success-header" id="modalSuccessLabel">
+        <div>
+          <div class="d-flex align-items-center justify-content-center m-2">
+            <img
+              src="assets/img/logo_reverse.png"
+              class="animate__animated animate__fadeIn animate__fast confa"
+            />
+          </div>
+          <div class="d-flex align-items-center justify-content-center m-2">
+            <img
+              src="assets/img/error.png"
+              class="animate__animated animate__fadeIn animate__fast"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="text-center p-2">
+          <h6 class="m-0 pt-3 pb-3">
+            {{ titulo }}
+          </h6>
+          <div class="m-0 pt-3 pb-3">
+            <p class="m-0">{{ texto }}</p>
+          </div>
+        </div>
+
+        <div class="p-2">
+          <div class="text-center btn-block">
+            <a href="#" class="btn btn-acepto" data-bs-dismiss="modal"
+              >Cerrar</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Button trigger modal -->
+<button
+  type="button"
+  class="btn-modal-warning btn btn-primary"
+  data-bs-toggle="modal"
+  data-bs-target="#warModal"
+  hidden
+>
+  Launch demo modal
+</button>
+
+<!-- Modal bien-->
+<div
+  class="modal fade modal-success"
+  id="warModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered justify-content-center">
+    <div class="modal-content">
+      <div class="modal-header success-header" id="modalSuccessLabel">
+        <div>
+          <div class="d-flex align-items-center justify-content-center m-2">
+            <img
+              src="assets/img/logo_reverse.png"
+              class="animate__animated animate__fadeIn animate__fast confa"
+            />
+          </div>
+          <div class="d-flex align-items-center justify-content-center m-2">
+            <img
+              src="assets/img/warning.png"
+              class="animate__animated animate__fadeIn animate__fast"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="text-center p-2">
+          <h6 class="m-0 pt-3 pb-3">
+            {{ titulo }}
+          </h6>
+          <div class="m-0 pt-3 pb-3">
+            <p class="m-0">{{ texto }}</p>
+          </div>
+        </div>
+
+        <div class="p-2">
+          <div class="text-center btn-block">
+            <a href="#" class="btn btn-acepto" data-bs-dismiss="modal"
+              >Cerrar</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <button
+  class="btn btn-credits btn-signin btn-block"
+  data-bs-toggle="modal"
+  data-bs-target="#modalPoliticaTratamientoDatos"
+>
+  <span class="spinner-border-sm mr-1"></span>
+  Política de tratamiento de datos
+</button> -->
+
+<!-- Modal Política de tratamiento de datos -->
+<div
+  class="modal fade modal-policies"
+  id="modalPoliticaTratamientoDatos"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="modalPoliticaTratamientoDatosTitle"
+  aria-hidden="true"
+  data-backdrop="static"
+  data-keyboard="false"
+  style="z-index: 10000000"
+>
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header p-2">
+        <div class="p-1 col-md-11">
+          <div class="card-politica">
+            <div class="row no-gutters">
+              <div
+                class="col-md-2 d-flex justify-content-center align-items-center"
+              >
+                <img
+                  src="{{ policiesService.policies.imagePolicies }}"
+                  class="card-img m-3"
+                  alt=""
+                />
+              </div>
+              <div class="card-politica-body col-md-10">
+                <div class="p-2">
+                  <span>{{
+                    policiesService.policies.informationalMessage
+                  }}</span>
+                  <h4
+                    class="modal-title"
+                    id="modalPoliticaTratamientoDatosTitle"
+                  >
+                    {{ policiesService.tratamientoDeDatos.title }}
+                  </h4>
+                  <p class="text-break m-0">
+                    {{ policiesService.tratamientoDeDatos.subtitle }}
+                    <a
+                      href="https://56a.4c4.myftpupload.com/wp-content/uploads/2022/05/POLI%CC%81TICA-DE-TRATAMIENTO-DE-LA-INFORMACIO%CC%81N-1-1.pdf"
+                      target="_blank"
+                      class="link-politicas"
+                      >ingresa aquí.
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+          data-bs-dismiss="modal"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body p-4 contenidopolicies">
+        <div class="row d-flex m-0">
+          <img
+            class="col-12 p-0"
+            src="{{ policiesService.policies.imageConfa }}"
+            alt=""
+          />
+          <!-- <h4 class="col-12 col-sm-5 col-md-5 col-lg-3 col-xl-3">{{ policiesService.tratamientoDeDatos.titleBody }}</h4> -->
+        </div>
+        <div style="height: 80% !important; overflow: auto">
+          <p
+            *ngFor="
+              let policiesTratamientoDeDatos of policiesService
+                .tratamientoDeDatos.paragraphs
+            "
+          >
+            <b>{{ policiesTratamientoDeDatos.paragraph1 }}</b>
+            {{ policiesTratamientoDeDatos.paragraph }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

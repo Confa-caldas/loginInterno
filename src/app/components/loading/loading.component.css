@@ -1,0 +1,31 @@
+div.modal-loading {
+  font-family: "Ubuntu", sans-serif !important;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 100000;
+}
+
+div.modal-loading div.modal-content {
+  background-color: transparent;
+  border: none;
+}
+
+div.modal-loading div.modal-content div div.img-loading {
+  background-image: url("../../../assets/img/loading.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  width: 100%;
+  height: 200px;
+  max-width: 50%;
+}
+
+div.modal-loading div.modal-content div h2 {
+  color: #fff;
+  font-weight: 400;
+}
+
+@media only screen and (max-width: 576px) {
+  div.modal-loading div.modal-content div div.img-loading {
+    height: 100px !important;
+  }
+}

@@ -1,0 +1,229 @@
+button.btn-credits {
+  background-color: #ff2c80;
+  border-color: #ff2c80;
+  color: #fff;
+  border-radius: 25px;
+  padding: 5px 20px;
+  outline: 0;
+
+  font-size: 14px;
+  line-height: 21px;
+  width: 300px;
+}
+div.form-group-custom label {
+  font-size: 10px;
+  line-height: 11px;
+  color: #404040;
+}
+
+h6 {
+  font-size: 30px !important;
+  line-height: 1px !important;
+  font-weight: 700 !important;
+  font-family: Ubuntu;
+}
+
+img.im {
+  max-width: 100%; /* La imagen no será más ancha que el 100% del contenedor */
+  height: auto; /* La altura se ajustará automáticamente para mantener la proporción */
+  background-size: cover;
+  max-width: 1060px;
+}
+
+div.contenedor {
+  background-size: cover;
+  padding-top: 10%;
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1400px !important;
+  }
+}
+
+.filing-document {
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 3%;
+  margin-bottom: 3%;
+  background-color: #ffffff;
+  border-radius: 10px;
+  border: 0px solid #333;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  transition: 0.2s ease-in-out;
+  /* box-shadow: 0 0 5px 2px #FFFFFF; */
+}
+
+/************************************ SELECT ************************************/
+
+div.card-custom-select {
+  border: none;
+  background-color: #666666;
+  border-radius: 25px;
+}
+
+div.content-custom-select select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: white;
+  border-color: #ff2c80;
+  color: #666666;
+  border-radius: 25px;
+  padding: 5px 29px;
+  outline: 0px;
+
+  font-size: 12px;
+  line-height: 21px;
+  text-align: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  height: 31px;
+}
+
+div.content-custom-select select option {
+  color: #8f8f8f;
+  font-size: 16px;
+  line-height: 18px;
+}
+
+div.content-custom-select select option:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+div.content-custom-select select option:nth-child(even) {
+  background-color: #fff;
+}
+
+div.content-custom-select i {
+  color: #ff2c80;
+  position: absolute;
+  bottom: 0em;
+  padding: 7px;
+  right: 1rem;
+  pointer-events: none;
+  width: 20px;
+  height: 20px;
+  display: block;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+input.box {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: white;
+  border-color: #ff2c80;
+  color: #666666;
+  border-radius: 25px;
+  padding: 5px 29px;
+  outline: 0px;
+
+  font-size: 12px;
+  line-height: 21px;
+  text-align: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  height: 31px;
+}
+
+.politica-de-tratamiento {
+  font-family: "Ubuntu-Bold", sans-serif;
+  font-size: 32px;
+  color: rgba(64, 64, 64, 1); /* Blanco con opacidad 64% */
+  text-align: left;
+  width: 491px;
+  height: 36px;
+  display: block; /* Ajustar según tu diseño específico */
+  margin: 0 auto; /* Centrar horizontalmente */
+}
+
+#flexCheckIndeterminate {
+  /* Cambia el color del borde del checkbox a rojo */
+  border-color: #ff2c80;
+}
+
+/* Estilo del ícono de verificación del checkbox */
+#flexCheckIndeterminate:checked::before {
+  /* Cambia el color del ícono de verificación a rojo cuando está marcado */
+  background-color: #ff2c80;
+}
+
+.form-check-input:checked {
+  background-color: #ff2c80 !important;
+}
+
+.form-check .form-check-input {
+  float: none;
+  margin-left: 0em;
+  margin-top: 20px;
+  margin-right: 10px;
+}
+
+.margtop {
+  margin-top: -40px;
+}
+
+@media only screen and (max-width: 768px) {
+  .margtop {
+    margin-top: 0px;
+  }
+}
+/************************************ MODAL CARD-POLITICA ************************************/
+
+div.modal-policies div.card-politica div img {
+  width: 80px;
+}
+
+div.modal-policies div.card-politica-body {
+  font-family: UbuntuRegular;
+}
+
+div.modal-policies div.card-politica-body div span {
+  font-size: 16px;
+  color: #00aef2;
+  font-weight: bold;
+}
+
+div.modal-policies div.card-politica-body div h4 {
+  color: #ff2c80;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+div.modal-policies div.card-politica-body div p {
+  font-size: 13px;
+  text-align: justify;
+  line-height: 18px;
+}
+
+div.modal-policies div.modal-body img {
+  max-width: 160px;
+  max-height: 77.83px;
+  font-weight: bold;
+  margin: auto;
+}
+
+div.modal-policies div.modal-body h4 {
+  color: #858585;
+  font-family: UbuntuRegular;
+}
+
+div.modal-policies div.modal-body p,
+div.modal-policies div.modal-body ul li {
+  font-size: 13px;
+  text-align: justify;
+  font-family: UbuntuRegular;
+  line-height: 18px;
+  color: #666666;
+}
+
+a {
+  color: #666666 !important;
+  cursor: pointer;
+}

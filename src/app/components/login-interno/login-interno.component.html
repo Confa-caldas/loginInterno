@@ -1,0 +1,153 @@
+<div class="test-environment-banner">
+  <h1>Ambiente de Pruebas</h1>
+</div>
+<br />
+<section class="fondo" style="background-color: #f0f0f0; height: 100vh">
+  <div *ngIf="!showError; else errorTemplate" class="container2">
+    <div class="row">
+      <div class="col-12 col-md-7 d-flex justify-content-center">
+        <div
+          class="card-login card border d-flex flex-column align-items-center align-items-stretch mt-4 mb-4"
+          style="background-color: #fff"
+        >
+          <div class="card-body card-body-login animated fadeIn fast">
+            <app-camera (pictureTaken)="handleImage($event)"></app-camera>
+          </div>
+        </div>
+      </div>
+      <div
+        class="col-12 col-md-5 mt-4 mb-4 d-flex flex-column align-items-center justify-content-center"
+      >
+        <div
+          class="parrafo d-flex flex-column justify-content-center pl-0 pr-0"
+        >
+          <div class="container-sistema">
+            <h2 class="titulo-sistema">
+              <span class="icon-computadora"></span> SISTEMA:
+              {{ nombreSistema }}
+            </h2>
+          </div>
+          <p
+            class="card-text"
+            style="
+              padding-top: 6%;
+              color: black !important;
+              font-size: 150% !important;
+            "
+          >
+            Por favor, mira de frente a la cámara. Te recomendamos no usar gafas
+            oscuras, tapabocas o gorras, procede a oprimir el botón acceder para
+            iniciar sesión en tu aplicativo.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #errorTemplate>
+    <div class="d-flex justify-content-center align-items-center vh-100">
+      <div class="error-container container2">
+        <div class="row">
+          <div class="col-12 d-flex justify-content-center">
+            <div
+              class="card-login card border d-flex flex-column align-items-center align-items-stretch"
+              style="background-color: #fff"
+            >
+              <div
+                class="card-body card-body-login animated fadeIn fast text-center"
+              >
+                <br />
+                <div class="icon-container">
+                  <img
+                    src="assets/img/error.png"
+                    alt="Error"
+                    class="error-icon"
+                  />
+                </div>
+                <h2
+                  style="
+                    color: #d9534f;
+                    font-size: 2em;
+                    font-weight: bold;
+                    margin-top: 20px;
+                  "
+                >
+                  Error de Acceso
+                </h2>
+                <br />
+                <p
+                  style="
+                    color: #555;
+                    font-size: 1.5em;
+                    font-weight: 500;
+                    margin-top: 10px;
+                  "
+                >
+                  No tienes permiso para consultar.
+                </p>
+                <br />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</section>
+<!-- Button trigger modal -->
+<button
+  type="button"
+  class="btn-modal-error btn btn-primary"
+  data-bs-toggle="modal"
+  data-bs-target="#ModalError"
+  hidden
+>
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div
+  class="modal fade modal-success"
+  id="ModalError"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered justify-content-center">
+    <div class="modal-content">
+      <div class="modal-header success-header" id="modalSuccessLabel">
+        <div>
+          <div class="d-flex align-items-center justify-content-center m-2">
+            <img
+              src="assets/img/logo_reverse.png"
+              class="animate__animated animate__fadeIn animate__fast confa"
+            />
+          </div>
+          <div class="d-flex align-items-center justify-content-center m-2">
+            <img
+              src="assets/img/error.png"
+              class="animate__animated animate__fadeIn animate__fast"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="text-center p-2">
+          <h6 class="m-0 pt-3 pb-3">
+            {{ titulo }}
+          </h6>
+          <div class="m-0 pt-3 pb-3">
+            <p class="m-0">{{ texto }}</p>
+          </div>
+        </div>
+
+        <div class="p-2">
+          <div class="text-center btn-block">
+            <a href="#" class="btn btn-acepto" data-bs-dismiss="modal"
+              >Cerrar</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
