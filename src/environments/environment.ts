@@ -7,12 +7,12 @@ export const environment = {
   //alojamiento: 'http://localhost:8080/alojamientoWS/rest/alojamiento/',
   alojamiento: 'https://app.confa.co:8687/alojamientoWS/rest/alojamiento/',
   identificacionFacial:
-    'https://app.confa.co:8687/transaccionAutenticacionWS/transaccion/',
+    'https://identidad.confa.co/transaccionAutenticacionWS/transaccion/',
   consultarIp: 'https://appint.confa.co/consultaIP/circular007/obtenerIP/',
   consultaLambdaDirecta: 'https://api-facial.confa.co/identificarvalidar',
   excepcionFacial: 'ojos-boca-dimension-gafasDeSol-brillo',
   tipoValidacionFacial: 'validacion',
-  key: 'Confa123*',
+  key: 'dRZpGS5fqv36AYQ*',
 
   // identificacionFacial:
   //   'http://localhost:8081/transaccionAutenticacionWS/transaccion/',
