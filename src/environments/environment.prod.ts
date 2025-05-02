@@ -5,7 +5,8 @@ export const environment = {
     'https://identidad.confa.co/transaccionAutenticacionWS/transaccion/',
   consultarIp: 'https://appint.confa.co/consultaIP/circular007/obtenerIP/',
   consultaLambdaDirecta: 'https://api-facial.confa.co/identificarvalidar',
-  excepcionFacial: 'ojos-boca-dimension-gafasDeSol-brillo',
+  excepcionFacial:
+    'ojos-boca-dimension-brillo-rostros-caras-objetos-gafasDeSol',
   tipoValidacionFacial: 'validacion',
   key: 'dRZpGS5fqv36AYQ*',
 };
