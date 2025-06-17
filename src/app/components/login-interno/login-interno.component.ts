@@ -33,6 +33,8 @@ export class LoginInternoComponent implements OnInit {
       const encryptedTransaccion = decodeURIComponent(params['prM1']);
       const encryptedSistema = decodeURIComponent(params['prM2']);
       const secretKey = environment.key;
+      console.log(encryptedTransaccion);
+      console.log(encryptedSistema);
 
       if (encryptedTransaccion && encryptedSistema) {
         try {
