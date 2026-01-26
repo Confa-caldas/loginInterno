@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:aws": "node build-for-aws.js",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -24,7 +25,7 @@
     "crypto-js": "^4.2.0",
     "jquery": "^3.7.1",
     "ngx-bootstrap": "^5.6.1",
-    "ngx-cookie-service": "^3.0.4",
+    "ngx-cookie-service": "^13.2.1",
     "ngx-webcam": "^0.4.1",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",
