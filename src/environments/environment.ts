@@ -9,9 +9,7 @@ export const environment = {
   identificacionFacial:
     'https://app.confa.co:8687/transaccionAutenticacionWS/transaccion/',
   consultarIp: 'https://appint.confa.co/consultaIP/circular007/obtenerIP/',
-  //consultaLambdaDirecta: 'https://api-facial.confa.co/identificarvalidar',
-  consultaLambdaDirecta: '  https://lo3llmhfb0.execute-api.us-east-1.amazonaws.com/PY/identificarvalidarmc',
-
+  consultaLambdaDirecta: 'https://api-facial.confa.co/identificarvalidar',
   excepcionFacial:
     'ojos-boca-dimension-brillo-rostros-caras-objetos-gafasDeSol',
   tipoValidacionFacial: 'validacion',
